@@ -1,15 +1,24 @@
 import numpy as np
-A=np.array([[1, 2], [3, 4]])
-B=np.array([[5, 6], [7, 8]])
-print("Matrix A:")
-print(A)
-print("Matrix B:")
-print(B)
-print("\nAddition:")
-print(A + B)
-print("\nSubtraction:")
-print(A - B)
-print("\nMatrix Multiplication:")
-print(np.dot(A, B))
-print("\nTranspose of A:")
-print(A.T)
+
+def create_matrix(mc):
+    print("\nArray " + str(mc) + " Elements:")
+    array_1 = map(int, input().split())
+    array_1 = np.array(list(array_1))
+
+    print("\nArray " + str(mc) + " Row & Column:")
+    row, column = map(int, input().split())
+
+    if len(array_1) != (row * column):
+        print("\nRow and column size not match with total elements!!! Retry!!!")
+        return create_matrix(mc)
+
+    array_1 = array_1.reshape(row, column)
+
+    print("\nArray " + str(mc))
+    print(array_1)
+
+    print("\nTranspose:")
+    return array_1.transpose()
+
+
+print(create_matrix(1))
